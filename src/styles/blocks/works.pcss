@@ -1,0 +1,136 @@
+.works {
+    padding-top: 200px;
+    padding-bottom: 210px
+}
+
+.works__title {
+    font-weight: bold;
+    font-size: 36px;
+    margin-bottom: 84px;
+}
+
+.works__content {
+    display: flex
+}
+
+.works__preview {
+    flex: 2;
+    position: relative;
+}
+
+.works__preview-image {
+    width: 100%
+}
+
+.works__controls {
+    position: absolute;
+    right: -50px;
+    bottom: 15%;
+    display: flex;
+    align-items: center;
+}
+
+.works__thumbnails {
+    display: flex;
+    align-items: center;
+}
+
+.works__thumbnails-item {
+    cursor: pointer;
+}
+
+.works__thumbnails-item.active {
+    border: 3px solid #DC9322;
+}
+
+.works__thumbnails-image {
+    max-width: unset;
+}
+
+.works__buttons {
+    z-index: 10;
+}
+
+.works__button {
+    width: 50px;
+    height: 50px;
+    background-color: #333C49;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+        background-color: burlywood;
+    }
+}
+.works__button.left {
+    transform: rotate(-180deg)
+}
+.works__button svg {
+    width: 26px;
+    fill: white;
+}
+
+.works__description {
+    flex: 1;
+    position: relative;
+    padding-left: 200px;
+
+    &::before {
+        content: '2';
+        position: absolute;
+        left: -20px;
+        top: -180px;
+        font-weight: 800;
+        font-size: 400px;
+        color: #E6E6E6;
+        z-index: -1;
+    }
+}
+
+.details__tags {
+    display: flex;
+    margin-bottom: 30px
+}
+
+.details__tags-item {
+    padding: 14px 22px;
+    background: #F3F6F9;
+    border-radius: 40px;
+    margin-right: 8px;
+
+    &:last-child {
+        margin-right: 0
+    }
+}
+
+.details__title {
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 35px
+}
+
+.details__text {
+    margin-bottom: 45px;
+}
+
+.details__button {
+    display: flex;
+    cursor: pointer;
+    
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.details__button-icon {
+    width: 23px;
+    fill: #586ED3;
+    margin-right: 20px;
+}
+
+.details__button-text {
+    color: #586ED3;
+    font-weight: bold;
+}

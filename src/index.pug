@@ -1,15 +1,263 @@
-include ./mixins.pug
+extends ./main.pug
 
-<!DOCTYPE html>
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    meta(http-equiv="X-UA-Compatible", content="ie=edge")
-    title Portfolio | main page
-  body
-    .wrapper
-      .maincontent
-        +image('content/user.jpg', 'user-pic')
-        +icon('link', 'link-class')
-        .icon-bg
+block content
+    .welcome-section
+        header.header
+            .container.header-container
+                .header__logo
+                    a.header__link(href='#') РЯ
+                ul.header__nav
+                    li.header__nav-item 
+                        a.header__nav-link(href='#')
+                            | Обо мне
+                    li.header__nav-item 
+                        a.header__nav-link(href='#')
+                            | Навыки
+                    li.header__nav-item 
+                        a.header__nav-link(href='#')
+                            | Работы
+                    li.header__nav-item
+                        a.header__nav-link(href='#')
+                            | Отзывы
+                ul.header__social
+                    li.header__social-item 
+                        a.header__social-link(href='#')
+                            +icon('insta', 'header__social-icon')
+                    li.header__social-item 
+                        a.header__social-link(href='#')
+                            +icon('github', 'header__social-icon')
+                    li.header__social-item 
+                        a.header__social-link(href='#')
+                            +icon('vk', 'header__social-icon')
+                    li.header__social-item 
+                        a.header__social-link(href='#')
+                            +icon('envelope', 'header__social-icon')
+
+        section.section.hero
+            .container
+                .hero__title 
+                    .hero__subtitle Личный сайт #[br] веб-разработчика
+                    .hero__name Яруллин Рустам
+                .hero__scroll 
+                    .hero__scroll-text Скролл
+                    +icon('scroll-down','hero__scroll-icon')
+                .hero__content 
+
+                    .hero__preview.userinfo
+                        +image('content/user.jpg', 'hero__user-image')
+                        .userinfo__row.row 
+                            .row__title Проживаю:
+                            .row__value Казань
+                        .userinfo__row.row 
+                            .row__title Возраст:
+                            .row__value 20 лет
+                        .userinfo__row.row 
+                            .row__title Родился:
+                            .row__value 22 марта 2001
+                    
+                    .hero__info.greeting
+                        .greeting__title Привет, меня зовут
+                        .greeting__name Яруллин Рустам
+                        .greeting__text 
+                            | Я занимаюсь разработкой современных сайтов и приложений.
+                            | Мне нравится делать интересные и современные проекты.
+                        .greeting__additional
+                            | Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool.
+                            | Чуть позже я освежу в нём свой контент.
+                            | А пока посмотрите, как тут всё классно и красиво!
+    
+
+    section.section.about 
+        .about__image 
+            +image('content/about-hands.png', 'about__image-img')
+        .container.about-container
+            .about__title Чем я могу быть полезен вам
+            .about__subtitle 
+                | Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. #[br]
+                | Чуть позже я освежу в нём свой контент. #[br]
+                | А пока посмотрите, как тут всё классно и красиво! #[br]
+            .about__content
+                - 
+                    var skills = [
+                        ['Front-end', 
+                            {
+                                'HTML5': 200, 
+                                'CSS3': 150, 
+                                'Javascript': 100,  
+                                'VueJS': 50,
+                            }
+                        ],
+
+                        ['Worflow', 
+                            {
+                                'GIT': 50, 
+                                'Terminal': 100, 
+                                'Gulp': 150, 
+                                'Webpack': 200,
+                            }
+                        ],
+                    ]
+                
+                ul.skills 
+                    each category in skills 
+                        li.skills__item 
+                            .skills-row 
+                                .skills-row__title #{category[0]}
+                                ul.skills-row__list 
+                                    each key, val in category[1]
+                                        li.skills-row__item
+                                            .skill 
+                                                svg(viewBox="0 0 100 100").skill__circle-shape
+                                                    circle(cx="50" cy="50" r="40").skill__circle.skill__circle_under
+                                                    circle(cx="50" cy="50" r="40" stroke="url(#gradient)" transform='rotate(180 50 50)' style=`stroke-dashoffset: ${key};`).skill__circle.skill__circle_above
+                                                    linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0")
+                                                        stop(offset="0%" stop-color="#D0731B")
+                                                        stop(offset="100%" stop-color="#DC9322")
+                                                .skill__circle-text #{val}
+
+
+    section.section.works 
+        .container 
+            .works__title Мои работы
+            .works__content 
+                .works__preview 
+                    +image('content/preview-image.png', 'works__preview-image')
+                    .works__controls 
+                        ul.works__thumbnails
+                            - for (let i=1; i<5; i++)
+                                if (i === 1)
+                                    li.works__thumbnails-item.active 
+                                        +image(`content/thumb${i}.png`,'works__thumbnails-image')
+                                else 
+                                    li.works__thumbnails-item 
+                                        +image(`content/thumb${i}.png`,'works__thumbnails-image')
+                        .works__buttons 
+                            .works__button.left 
+                                +icon('arrow', 'works__button-icon')
+                            .works__button.right
+                                +icon('arrow', 'works__button-icon')
+
+                .works__description.details
+                    ul.details__tags
+                        - var tags = ['HTML','CSS','Javascript']
+                        each tag in tags 
+                            li.details__tags-item #{tag}
+                    
+                    .details__title Сайт школы образования
+                    .details__text 
+                        | Этот парень проходил обучение 
+                        | веб-разработке не где-то, а в LoftSchool! 
+                        | 2 месяца только самых тяжелых 
+                        | испытаний и бессонных ночей!
+                    .details__button 
+                        +icon('icon', 'details__button-icon')
+                        .details__button-text Посмотреть сайт
+                        
+    
+    section.section.reviews 
+        .container 
+            .slider
+                .slider__head
+                    .reviews__title Что обо мне говорят
+                    .slider__buttons
+                        .slider__button 
+                            svg(class="slider__button-icon" width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg")
+                                circle(cx="26.5" cy="26.5" r="25.5" stroke="inherit" stroke-width="2")
+                                path(fill-rule="evenodd" clip-rule="evenodd" d="M21.8284 26.7071L29.1213 19.4142L27.7071 18L19 26.7071L27.7071 35.4142L29.1213 34L21.8284 26.7071Z" fill="white")
+                                
+                        .slider__button 
+                            svg(width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg")
+                                circle(cx="26.5" cy="26.5" r="25.5" stroke="inherit" stroke-width="2")
+                                path(fill-rule="evenodd" clip-rule="evenodd" d="M30.2929 26.7071L23 19.4142L24.4142 18L33.1213 26.7071L24.4142 35.4142L23 34L30.2929 26.7071Z" fill="white")
+                                
+
+                .slider__content 
+                    ul.slider__list
+                        li.slider__item
+                            .review 
+                                .review__content
+                                    .review__mark
+                                        +icon('quote', 'review__mark-icon')
+                                    .review__text 
+                                        | Этот парень проходил обучение 
+                                        | веб-разработке не где-то, а в LoftSchool! 
+                                        | 4,5 месяца только самых тяжелых 
+                                        | испытаний и бессонных ночей!
+                                .review__author
+                                    .review__author-avatar
+                                        +image('content/review-dmitriy.png', 'review__author-image')
+                                    .review__author-info 
+                                        .review__author-name Ковальчук Дмитрий
+                                        .review__author-subtitle Основатель Loftschool
+                        li.slider__item
+                            .review 
+                                .review__content
+                                    .review__mark
+                                        +icon ('quote', 'review__mark-icon')
+                                    .review__text 
+                                        | Этот код выдержит любые испытания.  
+                                        | Только пожалуйста, не загружайте сайт 
+                                        | на слишком старых браузерах 
+                                .review__author
+                                    .review__author-avatar
+                                        +image('content/review-vladimir.png', 'review__author-image')
+                                    .review__author-info 
+                                        .review__author-name Владимир Сабанцев
+                                        .review__author-subtitle Преподаватель
+             
+
+    footer.footer
+        .container.footer-container
+            .footer__column 
+                .footer__year © 2020
+
+            .footer__column
+                .footer__name Яруллин Рустам
+                .footer__subtitle Личный сайт веб-разработчика
+
+            .footer__column
+                ul.footer__nav
+                    li.footer__nav-item 
+                        a.footer__nav-link(href='#')
+                            | Обо мне
+                    li.footer__nav-item 
+                        a.footer__nav-link(href='#')
+                            | Навыки
+                    li.footer__nav-item 
+                        a.footer__nav-link(href='#')
+                            | Работы
+                    li.footer__nav-item
+                        a.footer__nav-link(href='#')
+                            | Отзывы
+                .footer__additional 
+                    | Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
+                ul.footer__social
+                    li.footer__social-item 
+                        a.footer__social-link(href='#')
+                            +icon('insta', 'footer__social-icon')
+                    li.footer__social-item 
+                        a.footer__social-link(href='#')
+                            +icon('github', 'footer__social-icon')
+                    li.footer__social-item 
+                        a.footer__social-link(href='#')
+                            +icon('vk', 'footer__social-icon')
+                    li.footer__social-item
+                        a.footer__social-link(href='#')
+                            +icon('envelope', 'footer__social-icon')
+
+            .footer__column
+                .footer__quote
+                    .footer__quote-text 
+                        | Всегда пишите код так, будто сопровождать его будет 
+                        | склонный к насилию психопат, который знает где вы живете
+                    .footer__quote-author Martin Golding
+
+            
+        
+
+
+
+
+                
+
+
