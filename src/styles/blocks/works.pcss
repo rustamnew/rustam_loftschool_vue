@@ -33,19 +33,17 @@
 .works__thumbnails {
     display: flex;
     align-items: center;
-}
 
-.works__thumbnails-item {
-    cursor: pointer;
-    opacity: 0.9;
+    &-item {
+        cursor: pointer;
 
-    &:hover {
-        opacity: 1;
+        &:hover {
+            border: 3px solid #DC9322;
+        }
+        &.active {
+            border: 3px solid #DC9322;
+        }
     }
-}
-
-.works__thumbnails-item.active {
-    border: 3px solid #DC9322;
 }
 
 .works__buttons {
