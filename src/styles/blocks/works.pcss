@@ -37,14 +37,15 @@
 
 .works__thumbnails-item {
     cursor: pointer;
+    opacity: 0.9;
+
+    &:hover {
+        opacity: 1;
+    }
 }
 
 .works__thumbnails-item.active {
     border: 3px solid #DC9322;
-}
-
-.works__thumbnails-image {
-    max-width: unset;
 }
 
 .works__buttons {
@@ -60,15 +61,16 @@
     align-items: center;
     cursor: pointer;
 
-    &:hover {
-        background-color: burlywood;
+    &:hover svg {
+        fill: #717883;
     }
 }
 .works__button.left {
     transform: rotate(-180deg)
 }
 .works__button svg {
-    width: 26px;
+    width: 20px;
+    height: 20px;
     fill: white;
 }
 

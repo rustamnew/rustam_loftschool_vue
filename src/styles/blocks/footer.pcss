@@ -52,13 +52,16 @@
     color: white;
     display: flex;
     margin-bottom: 48px;
-}
 
-.footer__nav-item {
-    margin-right: 60px
-}
-.footer__nav-item:last-child {
-    margin-right: 0
+    &-item {
+        margin-right: 60px
+    }
+    &-item:last-child {
+        margin-right: 0
+    }
+    &-link:hover {
+        color: $hover-color;
+    }
 }
 
 .footer__additional {
@@ -80,6 +83,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    &:hover {
+        border-color: $hover-color;
+    }
+    &:hover a svg {
+        fill: $hover-color;
+    }
 }
 
 .footer__social-link {
@@ -94,10 +104,6 @@
     fill: gray;
     width: 28px;
     max-height: 30px;
-
-    &:hover {
-        fill: burlywood;
-    }
 }
 
 .footer__quote {

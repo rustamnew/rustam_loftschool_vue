@@ -36,11 +36,13 @@
 .hero__scroll {
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-bottom: 180px;
     cursor: pointer;
 
     &-icon {
-        width: 20px;
+        width: 18px;
+        height: 18px;
         fill: white;
         margin-left: 8px;
     }
@@ -49,10 +51,10 @@
 }
 
 .hero__scroll:hover .hero__scroll-text {
-    color: burlywood;
+    color: $hover-color;
 }
 .hero__scroll:hover .hero__scroll-icon {
-    fill: burlywood;
+    fill: $hover-color;
 }
 
 
@@ -115,4 +117,18 @@
     font-style: italic;
     opacity: 0.8;
     line-height: 1.8;
+    position: relative;
+
+    &::before {
+        content: '*';
+        position: absolute;
+        left: -12%;
+        top: 0;
+
+        font-style: italic;
+        font-weight: normal;
+        font-size: 48px;
+        line-height: 1;
+        color: #db0200;
+    }
 }
