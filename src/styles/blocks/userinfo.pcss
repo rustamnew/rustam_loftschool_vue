@@ -1,0 +1,118 @@
+.userinfo {
+    color: white;
+}
+
+.userinfo__preview {
+    margin-right: 160px;
+
+    @include tablets {
+        margin-right: 80px;
+    }
+
+    @include phones {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.userinfo__content {
+    display: flex;
+    justify-content: center;
+
+    @include phones {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.userinfo__rows {
+    width: 100%;
+}
+
+.userinfo__row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    &-title {
+        opacity: 0.3;
+    }
+}
+
+.userinfo__image {
+    border-radius: 50%;
+    width: 200px;
+    margin-left: 60px;
+    margin-bottom: 80px;
+
+    @include phones {
+        margin-left: 0;
+        margin-bottom: 40px;
+    }
+}
+
+.userinfo__info {
+    width: 36%;
+
+    @include tablets {
+        width: 50%
+    }
+
+    @include phones {
+        width: unset;
+    }
+
+    &-title {
+        margin-bottom: 20px;
+        opacity: 0.8;
+
+        @include phones {
+            margin-bottom: 0;
+        }
+    }
+    &-name {
+        font-weight: bold;
+        font-size: 36px;
+        margin-bottom: 30px;
+
+        @include phones {
+            line-height: 1.5;
+        }
+    }
+    &-text {
+        opacity: 0.8;
+        margin-bottom: 78px;
+        line-height: 1.8;
+
+        @include phones {
+            margin-bottom: 60px;
+        }
+    }
+    &-additional {
+        font-style: italic;
+        opacity: 0.8;
+        line-height: 1.8;
+        position: relative;
+
+        &::before {
+            content: '*';
+            position: absolute;
+            left: -12%;
+            top: 0;
+
+            font-style: italic;
+            font-weight: normal;
+            font-size: 48px;
+            line-height: 1;
+            color: #db0200;
+
+            @include phones {
+                left: -11%;
+            }
+        }
+    }
+}

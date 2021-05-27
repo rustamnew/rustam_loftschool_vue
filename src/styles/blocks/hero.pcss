@@ -2,12 +2,20 @@
     background-image: url('../images/content/hero-background.png');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: top center
+    background-position: top center;
+
+    @include desktop {
+        background-image: url('../images/content/hero-background-1200.png');       
+    }
 }
 
 .hero {
     color: white;
-    padding-bottom: 100px
+    padding: 300px 0 100px;
+
+    @include tablets {
+        padding: 110px 0;
+    }
 }
 
 .hero__title {
@@ -15,22 +23,35 @@
     justify-content: center ;
     align-items: flex-start;
     margin-bottom: 290px;
+
+    @include tablets {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .hero__name {
     font-weight: 800;
     font-size: 72px;
     line-height: 72px;
-    width: 25%;
+
+    @include tablets {
+        text-align: center;
+    }
 }
 
 .hero__subtitle {
     opacity: 0.5;
     line-height: 1.7;
-    width: 12%;
     margin-right: 60px;
     padding-top: 10px;
     text-align: right;
+
+    @include tablets {
+        margin-right: 0;
+        text-align: center;
+        margin-bottom: 20px;
+    }
 }
 
 .hero__scroll {
@@ -40,14 +61,16 @@
     margin-bottom: 180px;
     cursor: pointer;
 
+    @include tablets {
+        display: none;
+    }
+
     &-icon {
         width: 18px;
         height: 18px;
         fill: white;
         margin-left: 8px;
     }
-
-    
 }
 
 .hero__scroll:hover .hero__scroll-text {
@@ -57,74 +80,6 @@
     fill: $hover-color;
 }
 
-
-.hero__content {
-    display: flex;
-    justify-content: center;
-}
-
-.hero__preview {
-    margin-right: 160px
-}
-
-.hero__user-image {
-    border-radius: 50%;
-    width: 200px;
-    margin-left: 60px;
-    margin-bottom: 80px
-}
-
-.userinfo__row {
-    margin-bottom: 20px
-}
-
-.hero__preview .row {
-    display: flex;
-    justify-content: space-between
-}
-
-.row__title {
-    opacity: 0.3;
-
-}
-
 .hero__info {
     width: 36%
-}
-
-.greeting__title {
-    margin-bottom: 20px;
-    opacity: 0.8;
-}
-
-.greeting__name {
-    font-weight: bold;
-    font-size: 36px;
-    margin-bottom: 30px
-}
-
-.greeting__text {
-    opacity: 0.8;
-    margin-bottom: 78px;
-    line-height: 1.8;
-}
-
-.greeting__additional {
-    font-style: italic;
-    opacity: 0.8;
-    line-height: 1.8;
-    position: relative;
-
-    &::before {
-        content: '*';
-        position: absolute;
-        left: -12%;
-        top: 0;
-
-        font-style: italic;
-        font-weight: normal;
-        font-size: 48px;
-        line-height: 1;
-        color: #db0200;
-    }
 }

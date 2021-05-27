@@ -1,0 +1,35 @@
+script(type='text/x-template')#reviews-container
+    .slider
+        .slider__head
+            .reviews__title Что обо мне говорят
+            .slider__buttons
+                .slider__button(
+                    @click='slide("prev")'
+                ) 
+                    svg(class="slider__button-icon" width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg")
+                        circle(cx="26.5" cy="26.5" r="25.5" stroke="inherit" stroke-width="2")
+                        path(fill-rule="evenodd" clip-rule="evenodd" d="M21.8284 26.7071L29.1213 19.4142L27.7071 18L19 26.7071L27.7071 35.4142L29.1213 34L21.8284 26.7071Z" fill="white")
+                        
+                .slider__button(
+                    @click='slide("next")'
+                )
+                    svg(width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg")
+                        circle(cx="26.5" cy="26.5" r="25.5" stroke="inherit" stroke-width="2")
+                        path(fill-rule="evenodd" clip-rule="evenodd" d="M30.2929 26.7071L23 19.4142L24.4142 18L33.1213 26.7071L24.4142 35.4142L23 34L30.2929 26.7071Z" fill="white")
+                        
+
+        .slider__content 
+            swiper(ref='slider' :options='sliderOptions')
+                swiper-slide(v-for='review in reviews' :key='review.id')
+                    .review 
+                        .review__content
+                            .review__mark
+                                +icon('quote', 'review__mark-icon')
+                            .review__text {{review.text}}
+                                
+                        .review__author
+                            .review__author-avatar
+                                img(:src='review.pic').review__author-image
+                            .review__author-info 
+                                .review__author-name {{review.name}}
+                                .review__author-subtitle {{review.occ}}

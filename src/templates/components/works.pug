@@ -1,0 +1,66 @@
+script(type='text/x-template')#works-container
+    .works__content 
+        display(
+            :currentWork='currentWork'
+            :works='works'
+            @slide='slide'
+            @thumbsClick='thumbsClick'
+            
+        )
+        info(
+            :currentWork='currentWork',
+        )
+
+script(type='text/x-template')#works-display
+    .works__preview
+        img(:src='currentWork.photo').works-preview__image
+        .works__controls
+            thumbs(
+                :currentWork='currentWork'
+                :works='works'
+                @thumbsClick='$emit("thumbsClick", $event)'
+                
+            )
+            buttons(
+                @slide='$emit("slide", $event)'
+            )
+        .works__number {{currentWork.id}}
+
+script(type='text/x-template')#works-thumbs
+    ul.works__thumbnails
+        li.works__thumbnails-item(
+            v-for='slide in works' 
+            @click='$emit("thumbsClick", $event)'
+            :key='slide.id' 
+            :data-number='slide.id'
+            :class='{active: currentWork.id == slide.id}'
+        )
+            img(:src='slide.photo').works__thumbnails-image
+
+script(type='text/x-template')#works-buttons
+    .works__buttons 
+        button(
+            @click='$emit("slide", "prev")'
+        ).works__button.left 
+            +icon('arrow', 'works__button-icon')
+        button(
+            @click='$emit("slide", "next")'
+        ).works__button.right
+            +icon('arrow', 'works__button-icon')
+
+script(type='text/x-template')#works-info
+    .works__description.details
+        .details__tags
+            tags(
+                :tags='tagsArray',
+            )
+        .details__title {{currentWork.title}}
+        .details__text {{currentWork.desc}}
+        .details__button 
+            +icon('icon', 'details__button-icon')
+            a(:href='currentWork.link').details__button-link Посмотреть сайт
+
+script(type='text/x-template')#works-tags   
+    ul.tags
+        li.tags-item(v-for='tag in tags') 
+            .tag {{tag}}

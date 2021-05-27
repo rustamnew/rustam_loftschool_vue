@@ -1,21 +1,60 @@
 .works {
     padding-top: 200px;
-    padding-bottom: 210px
+    padding-bottom: 210px;
+
+    &-container {
+        width: unset;
+    }
+
+    @include phones {
+        padding-top: 100px;
+    }
 }
 
 .works__title {
     font-weight: bold;
     font-size: 36px;
     margin-bottom: 84px;
+
+    @include phones {
+        text-align: center;
+        margin-bottom: 24px;
+    }
 }
 
 .works__content {
-    display: flex
+    display: flex;
+
+    @include tablets {
+        flex-direction: column
+    }
+}
+
+.works__number {
+    position: absolute;
+        right: -200px;
+        top: -180px;
+        font-weight: 800;
+        font-size: 400px;
+        color: #E6E6E6;
+        z-index: -1;
+
+        @include phones {
+            display: none;
+        }
 }
 
 .works__preview {
     flex: 2;
     position: relative;
+
+    @include tablets {
+        width: 80%;
+    }
+    @include phones {
+        width: 100%;
+        margin-bottom: 60px;
+    }
 }
 
 .works__preview-image {
@@ -28,14 +67,34 @@
     bottom: 15%;
     display: flex;
     align-items: center;
+    height: 100px;
+
+    @include desktop {
+        bottom: 25%;
+        right: -34px;
+        height: 68px;
+        bottom: 20%;      
+    }
+
+    @include phones {
+        height: unset;
+        right: 0;
+        bottom: 0;
+    }
 }
 
 .works__thumbnails {
     display: flex;
     align-items: center;
+    height: 100%;
+
+    @include phones {
+        display: none;       
+    }
 
     &-item {
         cursor: pointer;
+        height: 100%;
 
         &:hover {
             border: 3px solid #DC9322;
@@ -44,10 +103,16 @@
             border: 3px solid #DC9322;
         }
     }
+
+    &-image {
+
+    }
 }
 
 .works__buttons {
     z-index: 10;
+    height: 100%;
+
 }
 
 .works__button {
@@ -62,6 +127,16 @@
     &:hover svg {
         fill: #717883;
     }
+
+    @include desktop {
+        width: 34px;
+        height: 34px;       
+    }
+
+    @include phones {
+        width: 50px;
+        height: 50px; 
+    }
 }
 .works__button.left {
     transform: rotate(-180deg)
@@ -75,33 +150,17 @@
 .works__description {
     flex: 1;
     position: relative;
-    padding-left: 200px;
+    padding-left: 100px;
 
-    &::before {
-        content: '2';
-        position: absolute;
-        left: -20px;
-        top: -180px;
-        font-weight: 800;
-        font-size: 400px;
-        color: #E6E6E6;
-        z-index: -1;
+    @include tablets {
+        padding-top: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
-}
-
-.details__tags {
-    display: flex;
-    margin-bottom: 30px
-}
-
-.details__tags-item {
-    padding: 14px 22px;
-    background: #F3F6F9;
-    border-radius: 40px;
-    margin-right: 8px;
-
-    &:last-child {
-        margin-right: 0
+    
+    @include phones {
+        padding: 0 24px;
     }
 }
 
@@ -113,6 +172,16 @@
 
 .details__text {
     margin-bottom: 45px;
+
+    @include tablets {
+        width: 70%;
+        text-align: center;
+    }
+
+    @include phones {
+        width: 100%;
+        text-align: left;
+    }
 }
 
 .details__button {
@@ -122,6 +191,10 @@
     &:hover {
         text-decoration: underline;
     }
+
+    @include phones {
+        align-self: flex-start;
+    }
 }
 
 .details__button-icon {
@@ -130,7 +203,7 @@
     margin-right: 20px;
 }
 
-.details__button-text {
+.details__button-link {
     color: #586ED3;
     font-weight: bold;
 }

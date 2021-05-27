@@ -4,36 +4,66 @@
 }
 
 .footer-container {
-    display: flex;
-}
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 
+    @include tablets {
+        grid-template-columns: 1fr 2fr;
+    }
+
+    @include phones {
+        display: flex;
+        flex-direction: column;
+    }
+}
 
 .footer__column {
 
-
     &:nth-child(1) {
-        width: 14%;
         margin-right: 10px;
+        display: flex;
+
+        @include desktop {
+            flex-direction: column;
+        }
+        @include phones {
+            margin-right: 0;
+            margin-bottom: 40px;
+        }
     }
     &:nth-child(2) {
         margin-right: 10px;
+        @include phones {
+            margin-right: 0
+        }
     }
     &:nth-child(3) {
-        margin-right: 10px;
-    }
-    &:nth-child(4) {
         padding-top: 80px;
-        width: 30%;
+
+        @include tablets {
+            grid-column-start: 2;
+            grid-row-start: 2;
+            grid-column-end: 3;
+        }
     }
 }
 
+.footer__date {
+    margin-right: 50px;
 
-.footer__year {
-    font-size: 48px;
-    line-height: 1;
-    font-weight: 600;
-    color: white;
-    opacity: 0.3;
+    @include desktop {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    &-year {
+        min-width: 162px;
+        font-size: 48px;
+        line-height: 1;
+        font-weight: 600;
+        color: white;
+        opacity: 0.3;
+    }
 }
 
 .footer__name {
@@ -51,10 +81,23 @@
 .footer__nav {
     color: white;
     display: flex;
+    min-width: 428px;
     margin-bottom: 48px;
 
+    @include phones {
+        margin-bottom: 40px;
+        min-width: unset;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
     &-item {
-        margin-right: 60px
+        margin-right: 60px;
+
+        @include phones {
+            margin-right: 0;
+            margin-bottom: 20px;
+        }
     }
     &-item:last-child {
         margin-right: 0
@@ -62,6 +105,8 @@
     &-link:hover {
         color: $hover-color;
     }
+
+    
 }
 
 .footer__additional {
@@ -72,6 +117,10 @@
 
 .footer__social {
     display: flex;
+
+    @include phones {
+        justify-content: space-between;
+    }
 }
 
 .footer__social-item {
@@ -89,6 +138,10 @@
     }
     &:hover a svg {
         fill: $hover-color;
+    }
+
+    @include phones {
+        margin-right: 0;
     }
 }
 

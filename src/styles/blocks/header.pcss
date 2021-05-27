@@ -1,7 +1,6 @@
 .header {
     color: white;
     padding: 30px;
-    margin-bottom: 300px;
 }
 
 .header-container {
@@ -23,6 +22,10 @@
     display: flex;
     justify-content: space-between;
 
+    @include tablets {
+        display: none;
+    }
+
     &-item {
         margin-right: 60px;
 
@@ -39,7 +42,6 @@
 .header__social {
     display: flex;
 
-
     &-item {
         width: 30px;
         margin-right: 30px
@@ -49,8 +51,10 @@
         margin-right: 0
     }
 
+    @include phones {
+        display: none;
+    }
 }
-
 
 .header__social-icon {
     fill: white;
@@ -59,5 +63,24 @@
     &:hover {
         fill: $hover-color;
         opacity: 1;
+    }
+}
+
+.header__mobile {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: none;
+
+    @include tablets {
+        display: block;
+    }
+
+    & svg {
+        fill: white;
+
+        &:hover {
+            fill: $hover-color;
+        }
     }
 }
