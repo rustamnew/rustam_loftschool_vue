@@ -89,6 +89,22 @@
     }
 } 
 
+
+
+.slider__head {
+    display: flex;
+    margin-bottom: 78px;
+
+    @include phones {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.slider__buttons {
+    display: flex;
+}
+
 .slider__button {
     width: 53px;
     height: 53px;
@@ -103,21 +119,11 @@
     &:first-child {
         margin-right: 28px;
     }
-
-}
-
-.slider__head {
-    display: flex;
-    margin-bottom: 78px;
-
-    @include phones {
-        flex-direction: column;
-        align-items: center;
+    &.disabled {
+        pointer-events: none;
+        opacity: 0.5;
     }
-}
 
-.slider__buttons {
-    display: flex;
 }
 
 .slider__content {

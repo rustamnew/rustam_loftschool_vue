@@ -15,14 +15,37 @@ new Vue ({
         return {
             reviews: [],
             sliderOptions: {
-                slidesPerView: 2
+                slidesPerView: 1,
+                breakpoints: {
+                    481: {
+                        slidesPerView: 2,
+                    }
+                }
             }
         }
     },
     methods: {
+        checkIndex() {
+            let index = this.$refs['slider'].$swiper.activeIndex
+            let max = this.$refs['slider'].$swiper.slides.length - 2
+            let left = document.querySelector('.slider__buttons').childNodes[0]
+            let right = document.querySelector('.slider__buttons').childNodes[1]
+
+            if(window.innerWidth < 481) {
+                max +=1
+            }
+
+            if (index == 0) {
+                left.classList.add('disabled')
+            } else if (index == max) {
+                right.classList.add('disabled')
+            } else {
+                left.classList.remove('disabled')
+                right.classList.remove('disabled')
+            }
+        },
         
         requireImagesToArray(data) {
-            
             return data.map((item) => {
                 const requiredImage = require(`../images/content/${item.pic}`).default
                 item.pic = requiredImage
@@ -31,8 +54,6 @@ new Vue ({
         },
         
         slide(direction) {
-            console.log(window.innerWidth)
-
             const slider = this.$refs['slider'].$swiper;
             switch(direction) {
                 case 'next' :
@@ -42,6 +63,7 @@ new Vue ({
                     slider.slidePrev()
                     break;
             }
+            this.checkIndex()
         }
     },
     created() {
@@ -52,7 +74,9 @@ new Vue ({
         if (windowWidth <= 480) {
             this.sliderOptions.slidesPerView = 1
         }
-
-        console.log(this.sliderOptions.slidesPerView)
+        
+    },
+    mounted() {
+        this.checkIndex()
     }
 })

@@ -48,8 +48,8 @@ new Vue({
         }
     },
     watch: {
-        currentIndex(value) {
-            this.indexLoop(value)
+        currentIndex() {
+            this.indexCheck()
         }
     },
     methods: {
@@ -62,15 +62,19 @@ new Vue({
             target.classList.add('active')
             this.currentIndex = target.dataset.number - 1
         },
-        indexLoop(index) {
-            let worksNumber = this.works.length - 1
-            if (index < 0) {
-                this.currentIndex = worksNumber
-            } else if (index > worksNumber) {
-                this.currentIndex = 0
+        indexCheck() {
+            let index = this.currentIndex
+            let left = document.querySelector('.works__buttons').childNodes[0]
+            let right = document.querySelector('.works__buttons').childNodes[1]
+            let max = this.works.length - 1
+            if (index == 0) {
+                left.classList.add('disabled')
+            } else if (index == max) {
+                right.classList.add('disabled')
+            } else {
+                left.classList.remove('disabled')
+                right.classList.remove('disabled')
             }
-
-            console.log(index)
         },
         requireImagesToArray(data){
             return data.map(item => {
@@ -82,7 +86,9 @@ new Vue({
         slide(direction) {
             switch(direction) {
                 case 'next' :
-                    this.currentIndex++
+                    if(this.currentIndex < this.works.length) {
+                        this.currentIndex++
+                    }
                     break;
 
                 case 'prev' :
@@ -94,5 +100,9 @@ new Vue({
     created(){
         const data = require('../data/works.json')
         this.works = this.requireImagesToArray(data)
+    },
+    mounted(){
+        this.indexCheck()
     }
+    
 })
