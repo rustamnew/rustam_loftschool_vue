@@ -69,12 +69,6 @@ new Vue ({
     created() {
         const data = require('../data/reviews.json');
         this.reviews = this.requireImagesToArray(data)
-        let windowWidth = window.innerWidth
-
-        if (windowWidth <= 480) {
-            this.sliderOptions.slidesPerView = 1
-        }
-        
     },
     mounted() {
         this.checkIndex()
