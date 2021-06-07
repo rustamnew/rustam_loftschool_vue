@@ -1,7 +1,7 @@
 <template lang="pug">
     .skill-component(v-if='editmode === false')
         .title {{skill.title}}
-        .percent {{skill.percent}}
+        .percent {{skill.percent}} %
         .buttons
             icon(symbol='pencil' class='button' grayscale @click='editmode = true')
             icon(symbol='trash' class='button' grayscale @click='$emit("remove", skill.id)')

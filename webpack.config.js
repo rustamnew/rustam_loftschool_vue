@@ -10,7 +10,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = (env, argv) => {
   const isProductionBuild = argv.mode === "production";
-  const publicPath = "./";
+  const publicPath = "/rustam_loftschool_vue/";
 
   const pcss = {
     test: /\.(p|post|)css$/,

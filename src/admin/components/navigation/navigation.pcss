@@ -1,5 +1,15 @@
+@import "../../../styles/mixins.pcss";
+
+.navigation-container {
+    width: 90%
+}
+
 .list {
     display: flex;
+
+    @include phones {
+        justify-content: space-between
+    }
 }
 
 .item {
@@ -13,5 +23,11 @@
     &.active {
         color: #383BCF;
         border-bottom: 3px solid #383BCF;
+    }
+
+    @include phones {
+        padding: 22px;
+        font-size: 14px;
+        margin-right: 0px;
     }
 }

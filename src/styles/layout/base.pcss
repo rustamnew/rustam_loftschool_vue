@@ -5,6 +5,9 @@ html {
   @include tablets {
     font-size: 14px;
   }
+  @include phones {
+    font-size: 18px;
+  }
 }
 body,
 html {
@@ -24,6 +27,18 @@ body {
   overflow: hidden;
   min-height: 100%;
   position: relative;
+}
+
+.admin-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.maincontent {
+  height: 100%
 }
 
 .container {

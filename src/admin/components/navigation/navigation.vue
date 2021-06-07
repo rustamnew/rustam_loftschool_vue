@@ -1,6 +1,6 @@
 <template lang="pug">
     nav.navigation-component
-        .container
+        .container.navigation-container
             ul.list
                 li(
                     :class="['item', {active: link.active}]"

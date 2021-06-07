@@ -5,13 +5,13 @@
         user
       navigation
     .content
-      .container
+      .container.content-container
         .content__header
           .title Блок «Обо мне»
           .button
             iconed-button(type="iconed" title="Добавить группу" @click="showEmptyCategory = true")
         .skills
-          .list
+          ul.list
             li.item(v-if='showEmptyCategory === true')
               category(
                 empty

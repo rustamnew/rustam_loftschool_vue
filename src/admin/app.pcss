@@ -1,4 +1,19 @@
+@import "../styles/mixins.pcss";
 
+.content {
+    
+}
+
+.app {
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.content-container {
+    @include phones {
+        width: 100%
+    }
+}
 
 .title {
     font-weight: bold;
@@ -10,14 +25,35 @@
     flex-direction: column
 }
 
+.content {
+    height: -webkit-fill-available;
+    @include tablets {
+        background: url(../images/content/admin-background.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: bottom left;
+    }
+    
+}
+
 .content__header {
     padding: 50px 0;
     display: flex;
     align-items: center;
+
+    @include phones {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 20px;
+    }
 }
 
 .title {
     margin-right: 54px;
+
+    @include phones {
+        margin-bottom: 26px;
+    }
 }
 
 
@@ -25,7 +61,11 @@
 .list {
     display: grid;
     grid-gap: 25px;
-    grid-template-columns: 1fr 1fr
+    grid-template-columns: 1fr 1fr;
+
+    @include phones {
+        grid-template-columns: 1fr
+    }
 }
 
 .item {
