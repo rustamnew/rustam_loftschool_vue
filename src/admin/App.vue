@@ -10,6 +10,7 @@
           .title Блок «Обо мне»
           .button
             iconed-button(type="iconed" title="Добавить группу" @click="showEmptyCategory = true")
+        router-view
         .skills
           ul.list
             li.item(v-if='showEmptyCategory === true')
